@@ -537,7 +537,7 @@ h1, h2, h3, h4, h5 {
     height: 100%;
     background: linear-gradient(45deg, rgba(0, 102, 255, 0.1), rgba(0, 204, 255, 0.05));
     z-index: 2;
-    pointer-events: none; /* Allows clicks to pass through */
+    pointer-events: none;
 }
 
 .image-placeholder {
@@ -1112,53 +1112,35 @@ h1, h2, h3, h4, h5 {
         flex-direction: column;
         text-align: center;
     }
-    /* Profile Photo Styling */
-.profile-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+}
+
+/* PROFILE PHOTO FIX - SHOWS FULL FACE */
+.about-image .image-frame {
+    overflow: visible !important;
+    background: transparent !important;
+}
+
+.about-image .image-frame img.profile-photo {
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     border-radius: 10px;
-    transition: transform 0.5s ease;
-    position: relative;
     z-index: 1;
 }
 
-.profile-photo:hover {
-    transform: scale(1.03);
-}
-
-.image-frame:hover .profile-photo {
-    transform: scale(1.05);
-}
-
-/* Hide the placeholder icon and text */
 .image-placeholder {
     display: none !important;
 }
 
-/* Ensure image frame shows the photo */
-.image-frame {
-    position: relative;
-    overflow: hidden;
-    /* EMERGENCY FIX - Force image to show */
-.about-image .image-frame img.profile-photo {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    /* Fix for showing full face */
-.profile-photo {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.image-frame {
-    overflow: visible;
-    background: rgba(255, 255, 255, 0.05);
+.image-overlay {
+    z-index: 2;
 }
