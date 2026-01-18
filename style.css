@@ -1145,4 +1145,20 @@ h1, h2, h3, h4, h5 {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
+    /* Fix for showing full face */
+.profile-photo {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.image-frame {
+    overflow: visible;
+    background: rgba(255, 255, 255, 0.05);
 }
