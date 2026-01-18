@@ -1110,4 +1110,27 @@ h1, h2, h3, h4, h5 {
         flex-direction: column;
         text-align: center;
     }
+    /* Profile Photo Styling */
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.5s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-photo:hover {
+    transform: scale(1.03);
+}
+
+.image-frame:hover .profile-photo {
+    transform: scale(1.05);
+}
+
+/* Remove the placeholder styles */
+.image-placeholder {
+    display: none;
+}
 }
