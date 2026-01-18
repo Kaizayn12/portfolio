@@ -1129,8 +1129,13 @@ h1, h2, h3, h4, h5 {
     transform: scale(1.05);
 }
 
-/* Remove the placeholder styles */
+/* Hide the placeholder icon and text */
 .image-placeholder {
-    display: none;
+    display: none !important;
 }
+
+/* Ensure image frame shows the photo */
+.image-frame {
+    position: relative;
+    overflow: hidden;
 }
