@@ -1,17 +1,19 @@
 // Portfolio Script - Cinematic Experience
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize everything
-    initLoadingScreen();
-    initParticles();
-    initNavigation();
-    initTypingEffect();
-    initScrollAnimations();
-    initSkillMeters();
-    initCurrentYear();
-    
-    // Add cinematic scroll effect
-    initCinematicScroll();
+   // Initialize everything
+initLoadingScreen();
+initParticles();
+initNavigation();
+initTypingEffect();
+initScrollAnimations();
+initSkillMeters();
+initCurrentYear();
+initLanguageMeters();  // ADD THIS LINE
+initInteractiveTags(); // ADD THIS LINE
+
+// Add cinematic scroll effect
+initCinematicScroll();
 });
 
 // Loading Screen Animation
@@ -196,6 +198,15 @@ function animateHeroElements() {
             card.classList.add('fade-in');
         }, 300 * index);
     });
+     // ADD THIS PART - Floating animation for info cards
+    infoCards.forEach(card => {
+        card.classList.add('float-animation');
+    });
+    
+    // Add random delay to floating animations
+    infoCards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.2}s`;
+    });
 }
 
 // Scroll Animations
@@ -288,3 +299,53 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+// Animate Language Meters
+function initLanguageMeters() {
+    const languageMeters = document.querySelectorAll('.language-fill');
+    
+    const languageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const width = entry.target.getAttribute('data-width');
+                entry.target.style.width = width + '%';
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    languageMeters.forEach(meter => {
+        languageObserver.observe(meter);
+    });
+}
+
+// Interactive Skill Tags Filter
+function initInteractiveTags() {
+    const tags = document.querySelectorAll('.tag');
+    
+    tags.forEach(tag => {
+        tag.addEventListener('click', () => {
+            // Remove active class from all tags
+            tags.forEach(t => t.classList.remove('active'));
+            
+            // Add active class to clicked tag
+            tag.classList.add('active');
+            
+            const filter = tag.dataset.filter;
+            const skillCategories = document.querySelectorAll('.skill-category');
+            
+            // Simple visual feedback (for now)
+            skillCategories.forEach(category => {
+                if (filter === 'all') {
+                    category.style.opacity = '1';
+                    category.style.transform = 'scale(1)';
+                } else {
+                    category.style.opacity = '0.6';
+                    category.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        category.style.opacity = '1';
+                        category.style.transform = 'scale(1)';
+                    }, 300);
+                }
+            });
+        });
+    });
+}
