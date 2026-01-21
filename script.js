@@ -32,47 +32,51 @@ function initLoadingScreen() {
     }, 2000);
 }
 
-// Particle Background
+// Particle Background - CLEAN MINIMALIST VERSION
 function initParticles() {
     const particlesContainer = document.getElementById('particles');
-    const particleCount = 50;
+    const particleCount = 30; // Reduced from 50
     
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
         
-        // Random properties
-        const size = Math.random() * 3 + 1;
+        // Random properties - more subtle
+        const size = Math.random() * 2 + 1; // Smaller particles
         const posX = Math.random() * 100;
         const posY = Math.random() * 100;
         const delay = Math.random() * 5;
-        const duration = Math.random() * 10 + 10;
+        const duration = Math.random() * 15 + 15; // Slower movement
+        const opacity = Math.random() * 0.08 + 0.02; // Very subtle
         
-    // Apply styles - cleaner, more subtle particles
-const opacity = Math.random() * 0.1 + 0.05; // Reduced opacity
-particle.style.cssText = `
-    position: absolute;
-    width: ${size}px;
-    height: ${size}px;
-    background: rgba(0, 102, 255, ${opacity}); /* More subtle */
-    border-radius: 50%;
-    left: ${posX}%;
-    top: ${posY}%;
-    animation: floatParticle ${duration * 1.5}s ease-in-out ${delay}s infinite; /* Slower */
-    filter: blur(0.5px); /* Softer edges */
-`;
+        // Apply styles - minimalist
+        particle.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            background: rgba(0, 102, 255, ${opacity});
+            border-radius: 50%;
+            left: ${posX}%;
+            top: ${posY}%;
+            animation: floatParticle ${duration}s ease-in-out ${delay}s infinite;
+            filter: blur(0.3px);
+        `;
         
         particlesContainer.appendChild(particle);
     }
     
-    // Add CSS animation for particles
+    // Add CSS animation for particles - minimalist
     const style = document.createElement('style');
     style.textContent = `
         @keyframes floatParticle {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.5; }
-            25% { transform: translate(${Math.random() * 20 - 10}px, ${Math.random() * 20 - 10}px) rotate(90deg); }
-            50% { transform: translate(${Math.random() * 30 - 15}px, ${Math.random() * 30 - 15}px) rotate(180deg); opacity: 0.8; }
-            75% { transform: translate(${Math.random() * 20 - 10}px, ${Math.random() * 20 - 10}px) rotate(270deg); }
+            0%, 100% { 
+                transform: translate(0, 0) rotate(0deg); 
+                opacity: 0.1;
+            }
+            50% { 
+                transform: translate(${Math.random() * 10 - 5}px, ${Math.random() * 10 - 5}px) rotate(180deg); 
+                opacity: 0.2;
+            }
         }
     `;
     document.head.appendChild(style);
