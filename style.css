@@ -1362,3 +1362,31 @@ h1, h2, h3, h4, h5 {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
 }
+/* ===== NUCLEAR PROFILE FIX ===== */
+.about-image .image-frame {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.about-image .image-frame::before,
+.about-image .image-frame::after {
+    display: none !important;
+}
+
+.about-image .image-frame img.profile-photo {
+    background: transparent !important;
+    mix-blend-mode: normal !important;
+    filter: none !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+
+/* Remove any potential overlays */
+.about-image .image-frame > *:not(img) {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
