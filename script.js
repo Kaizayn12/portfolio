@@ -48,17 +48,19 @@ function initParticles() {
         const delay = Math.random() * 5;
         const duration = Math.random() * 10 + 10;
         
-        // Apply styles
-        particle.style.cssText = `
-            position: absolute;
-            width: ${size}px;
-            height: ${size}px;
-            background: rgba(0, 102, 255, ${Math.random() * 0.3});
-            border-radius: 50%;
-            left: ${posX}%;
-            top: ${posY}%;
-            animation: floatParticle ${duration}s ease-in-out ${delay}s infinite;
-        `;
+    // Apply styles - cleaner, more subtle particles
+const opacity = Math.random() * 0.1 + 0.05; // Reduced opacity
+particle.style.cssText = `
+    position: absolute;
+    width: ${size}px;
+    height: ${size}px;
+    background: rgba(0, 102, 255, ${opacity}); /* More subtle */
+    border-radius: 50%;
+    left: ${posX}%;
+    top: ${posY}%;
+    animation: floatParticle ${duration * 1.5}s ease-in-out ${delay}s infinite; /* Slower */
+    filter: blur(0.5px); /* Softer edges */
+`;
         
         particlesContainer.appendChild(particle);
     }
